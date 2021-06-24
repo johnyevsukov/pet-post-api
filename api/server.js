@@ -7,4 +7,10 @@ server.use(express.json())
 server.use(helmet())
 server.use(cors())
 
+server.get('/', (req, res) => {
+    res.status(200).json({
+        message: 'api up'
+    })
+})
+
 module.exports = server
