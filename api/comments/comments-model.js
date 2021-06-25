@@ -23,6 +23,17 @@ const getById = (id) => {
     .first()
 }
 
+const getByPostId = (id) => {
+    return db('comments as c')
+    .select(
+        'c.comment_id',
+        'c.post_id',
+        'c.comment_text',
+        'u.user_username')
+    .join('users as u', 'c.user_id', 'u.user_id')
+    .where('post_id', id)
+}
+
 const getBy = (filter) => {
     return db('comments')
     .where(filter)
@@ -32,5 +43,6 @@ const getBy = (filter) => {
 module.exports = {
     getAll,
     getById,
+    getByPostId,
     getBy
 }
