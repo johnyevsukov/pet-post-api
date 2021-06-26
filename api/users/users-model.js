@@ -17,8 +17,16 @@ const getBy = (filter) => {
     .first()
 }
 
+const insert = async (user) => {
+    await db('users')
+    .insert(user)
+
+    return getBy({username: user.username})
+}
+
 module.exports = {
     getAll,
     getById,
-    getBy
+    getBy,
+    insert
 }
