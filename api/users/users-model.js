@@ -11,6 +11,20 @@ const getById = (id) => {
     .first()
 }
 
+const getFollowersById = (id) => {
+    return db('users as u')
+    .join('connections as c', 'c.following_id', 'u.user_id')
+    .join('users as us', 'c.follower_id', 'us.user_id')
+    .where('u.user_id', id)
+}
+
+const getFollowingById = (id) => {
+    return db('users as u')
+    .join('connections as c', 'c.follower_id', 'u.user_id')
+    .join('users as us', 'c.following_id', 'us.user_id')
+    .where('u.user_id', id)
+}
+
 const getBy = (filter) => {
     return db('users')
     .where(filter)
@@ -24,9 +38,19 @@ const insert = async (user) => {
     return getBy({username: user.username})
 }
 
+const deleteById = (id) => {
+    return db('users')
+    .where('user_id', id)
+    .del()
+
+}
+
 module.exports = {
     getAll,
     getById,
     getBy,
-    insert
+    insert,
+    deleteById,
+    getFollowingById,
+    getFollowersById
 }
