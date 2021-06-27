@@ -6,7 +6,7 @@ const getAll = () => {
     .select(
         'p.post_id',
         'p.post_text',
-        'u.user_username')
+        'u.username')
     .join('users as u', 'p.user_id', 'u.user_id')
 }
 
@@ -15,20 +15,30 @@ const getById = (id) => {
     .select(
         'p.post_id',
         'p.post_text',
-        'u.user_username')
+        'u.username')
     .join('users as u', 'p.user_id', 'u.user_id')
     .where('post_id', id)
     .first()
 }
 
+const getByUserId = (id) => {
+    return db('posts as p')
+    .select(
+        'p.post_id',
+        'p.post_text',
+        'u.username')
+    .join('users as u', 'p.user_id', 'u.user_id')
+    .where('p.user_id', id)
+}
+
 const getBy = (filter) => {
     return db('posts')
     .where(filter)
-    .first()
 }
 
 module.exports = {
     getAll,
     getById,
-    getBy
+    getBy,
+    getByUserId
 }
