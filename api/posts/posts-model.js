@@ -15,7 +15,8 @@ const getById = (id) => {
     .select(
         'p.post_id',
         'p.post_text',
-        'u.username')
+        'u.username',
+        'p.user_id')
     .join('users as u', 'p.user_id', 'u.user_id')
     .where('post_id', id)
     .first()
