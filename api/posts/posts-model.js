@@ -21,6 +21,14 @@ const getById = (id) => {
     .first()
 }
 
+const updateById = async (id, change) => {
+    await db('posts')
+    .where('post_id', id)
+    .update(change)
+
+    return getById(id)
+}
+
 const getByUserId = (id) => {
     return db('posts as p')
     .select(
@@ -40,5 +48,6 @@ module.exports = {
     getAll,
     getById,
     getBy,
-    getByUserId
+    getByUserId,
+    updateById
 }

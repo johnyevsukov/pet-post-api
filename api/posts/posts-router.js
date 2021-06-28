@@ -23,6 +23,14 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.put('/:id', (req, res, next) => {
+    Post.updateById(req.params.id, req.body)
+    .then(post => {
+        res.status(200).json(post)
+    })
+    .catch(next)
+})
+
 router.get('/timeline/feed', async (req, res, next) => {
     try {
         const userPosts = await Post.getBy({ user_id: req.decodedToken.subject })
