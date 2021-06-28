@@ -7,7 +7,7 @@ const getAll = () => {
         'c.comment_id',
         'c.post_id',
         'c.comment_text',
-        'u.user_username')
+        'u.username')
     .join('users as u', 'c.user_id', 'u.user_id')
 }
 
@@ -17,7 +17,7 @@ const getById = (id) => {
         'c.comment_id',
         'c.post_id',
         'c.comment_text',
-        'u.user_username')
+        'u.username')
     .join('users as u', 'c.user_id', 'u.user_id')
     .where('comment_id', id)
     .first()
@@ -29,7 +29,7 @@ const getByPostId = (id) => {
         'c.comment_id',
         'c.post_id',
         'c.comment_text',
-        'u.user_username')
+        'u.username')
     .join('users as u', 'c.user_id', 'u.user_id')
     .where('post_id', id)
 }
