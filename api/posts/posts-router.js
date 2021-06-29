@@ -66,8 +66,8 @@ router.get('/:id/comments', (req, res, next) => {
 router.post('/:id/comments', (req, res, next) => {
     const comment = { ...req.body, post_id: req.params.id }
     Comment.post(comment)
-    .then(() => {
-        res.status(200).json('success')
+    .then(comment => {
+        res.status(200).json(comment)
     })
     .catch(next)
 })

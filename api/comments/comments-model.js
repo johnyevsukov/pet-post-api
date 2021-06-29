@@ -34,9 +34,10 @@ const getByPostId = (id) => {
     .where('post_id', id)
 }
 
-const post = (comment) => {
-    return db('comments')
-    .insert(comment)
+const post = async (comment) => {
+    const [id] = await db('comments')
+    .insert(comment, 'comment_id')
+    return getById(id)
 }
 
 const getBy = (filter) => {
