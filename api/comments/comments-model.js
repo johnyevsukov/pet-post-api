@@ -29,7 +29,8 @@ const getByPostId = (id) => {
         'c.comment_id',
         'c.post_id',
         'c.comment_text',
-        'u.username')
+        'u.username',
+        'c.user_id')
     .join('users as u', 'c.user_id', 'u.user_id')
     .where('post_id', id)
 }
