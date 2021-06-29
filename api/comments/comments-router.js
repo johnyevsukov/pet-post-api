@@ -18,4 +18,12 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.delete('/:id', (req, res, next) => {
+    Comment.deleteById(req.params.id)
+    .then(comment => {
+        res.status(200).json(comment)
+    })
+    .catch(next)
+})
+
 module.exports = router
