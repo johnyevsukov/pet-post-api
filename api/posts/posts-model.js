@@ -30,6 +30,15 @@ const updateById = async (id, change) => {
     return getById(id)
 }
 
+const deleteById = async (id) => {
+    const deleted = await getById(id)
+    await db('posts')
+    .where('post_id', id)
+    .del()
+
+    return deleted
+}
+
 const getByUserId = (id) => {
     return db('posts as p')
     .select(
@@ -50,5 +59,6 @@ module.exports = {
     getById,
     getBy,
     getByUserId,
-    updateById
+    updateById,
+    deleteById
 }
