@@ -63,4 +63,13 @@ router.get('/:id/comments', (req, res, next) => {
     .catch(next)
 })
 
+router.post('/:id/comments', (req, res, next) => {
+    const comment = { ...req.body, post_id: req.params.id }
+    Comment.post(comment)
+    .then(() => {
+        res.status(200).json('success')
+    })
+    .catch(next)
+})
+
 module.exports = router

@@ -34,6 +34,11 @@ const getByPostId = (id) => {
     .where('post_id', id)
 }
 
+const post = (comment) => {
+    return db('comments')
+    .insert(comment)
+}
+
 const getBy = (filter) => {
     return db('comments')
     .where(filter)
@@ -44,5 +49,6 @@ module.exports = {
     getAll,
     getById,
     getByPostId,
-    getBy
+    getBy,
+    post
 }
