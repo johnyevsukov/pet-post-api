@@ -10,6 +10,14 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+router.put('/:id', (req, res, next) => {
+    Comment.updateById(req.params.id, req.body)
+    .then(comment => {
+        res.status(200).json(comment)
+    })
+    .catch(next)
+})
+
 router.get('/:id', (req, res, next) => {
     Comment.getById(req.params.id)
     .then(comment => {

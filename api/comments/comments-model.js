@@ -42,6 +42,14 @@ const post = async (comment) => {
     return getById(id)
 }
 
+const updateById = async (id, change) => {
+    await db('comments')
+    .where('comment_id', id)
+    .update(change)
+
+    return getById(id)
+}
+
 const deleteById = async (id) => {
     const deleted = await getById(id)
     await db('comments')
@@ -63,5 +71,6 @@ module.exports = {
     getByPostId,
     getBy,
     post,
-    deleteById
+    deleteById,
+    updateById
 }
