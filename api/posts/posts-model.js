@@ -13,10 +13,8 @@ const getAll = () => {
 const getById = (id) => {
     return db('posts as p')
     .select(
-        'p.post_id',
-        'p.post_text',
-        'u.username',
-        'p.user_id')
+        'p.*',
+        'u.username')
     .join('users as u', 'p.user_id', 'u.user_id')
     .where('post_id', id)
     .first()
