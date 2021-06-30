@@ -20,6 +20,7 @@ exports.up = function(knex) {
       .inTable('users')
       .onDelete('CASCADE')
       .onUpdate('CASCADE')
+      posts.timestamps(false, true)
     })
     .createTable('comments', (comments) => {
       comments.increments('comment_id')
@@ -38,6 +39,7 @@ exports.up = function(knex) {
       .inTable('users')
       .onDelete('CASCADE')
       .onUpdate('CASCADE')
+      comments.timestamps(false, true)
     })
     .createTable('likes', (likes) => {
       likes.increments('like_id')
