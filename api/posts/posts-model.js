@@ -28,6 +28,12 @@ const updateById = async (id, change) => {
     return getById(id)
 }
 
+const post = async (post) => {
+    const [id] = await db('posts')
+    .insert(post, 'post_id')
+    return getById(id)
+}
+
 const deleteById = async (id) => {
     const deleted = await getById(id)
     await db('posts')
@@ -58,5 +64,6 @@ module.exports = {
     getBy,
     getByUserId,
     updateById,
-    deleteById
+    deleteById,
+    post
 }

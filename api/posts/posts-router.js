@@ -23,6 +23,17 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.post('/', (req, res, next) => {
+    Post.post({
+        ...req.body,
+        user_id: req.decodedToken.subject
+    })
+    .then(post => {
+        res.status(200).json(post)
+    })
+    .catch(next)
+})
+
 router.put('/:id', (req, res, next) => {
     Post.updateById(req.params.id, req.body)
     .then(post => {
