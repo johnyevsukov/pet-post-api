@@ -52,4 +52,12 @@ router.get('/:id/followers', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/:id/posts', (req, res, next) => {
+    User.getPostsById(req.params.id)
+    .then(posts => {
+        res.status(200).json(posts)
+    })
+    .catch(next)
+})
+
 module.exports = router

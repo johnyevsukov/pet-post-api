@@ -25,6 +25,11 @@ const getFollowingById = (id) => {
     .where('u.user_id', id)
 }
 
+const getPostsById = (id) => {
+    return db('posts')
+    .where('user_id', id)
+}
+
 const getBy = (filter) => {
     return db('users')
     .where(filter)
@@ -52,5 +57,6 @@ module.exports = {
     insert,
     deleteById,
     getFollowingById,
-    getFollowersById
+    getFollowersById,
+    getPostsById
 }
