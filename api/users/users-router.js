@@ -72,8 +72,11 @@ router.post('/:id/follow', (req, res, next) => {
     .catch(next)
 })
 
-router.delete('/:id/unfollow', (req, res, next) => {
-    User.unFollowById({connection_id: req.params.id})
+router.delete('/:flr_id/unfollow/:flg_id', (req, res, next) => {
+    User.unFollowById({
+        follower_id: req.params.flr_id,
+        following_id: req.params.flg_id
+    })
     .then(() => {
         res.status(200).json('deleted')
     })
