@@ -60,4 +60,24 @@ router.get('/:id/posts', (req, res, next) => {
     .catch(next)
 })
 
+router.post('/:id/follow', (req, res, next) => {
+    const connection = {
+        ...req.body,
+        follower_id: req.params.id
+    }
+    User.followById(connection)
+    .then(con => {
+        res.status(200).json(con)
+    })
+    .catch(next)
+})
+
+router.delete('/:id/unfollow', (req, res, next) => {
+    User.unFollowById({connection_id: req.params.id})
+    .then(() => {
+        res.status(200).json('deleted')
+    })
+    .catch(next)
+})
+
 module.exports = router
