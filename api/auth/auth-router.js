@@ -16,7 +16,12 @@ router.post('/register', checkBody, checkUsernameFree, (req, res, next) => {
 
     User.insert(user)
     .then(newUser => {
-        res.status(201).json(newUser)
+        const token = tokenBuilder(newUser)
+        res.status(201).json({
+            message: `Welcome, ${newUser.username}`,
+            user_id: newUser.user_id,
+            token
+        })
     })
     .catch(next)
 })
