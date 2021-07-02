@@ -77,8 +77,8 @@ router.delete('/:flr_id/unfollow/:flg_id', (req, res, next) => {
         follower_id: req.params.flr_id,
         following_id: req.params.flg_id
     })
-    .then(() => {
-        res.status(200).json('deleted')
+    .then(con => {
+        res.status(200).json(con)
     })
     .catch(next)
 })

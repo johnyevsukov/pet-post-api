@@ -48,6 +48,8 @@ const unFollowById = async (connection) => {
     await db('connections')
     .where(connection)
     .del()
+
+    return getFollowersById(connection.following_id)
 }
 
 const insert = async (user) => {
