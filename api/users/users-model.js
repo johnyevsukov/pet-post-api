@@ -52,6 +52,14 @@ const unFollowById = async (connection) => {
     return getFollowersById(connection.following_id)
 }
 
+const updateById = async (id, update) => {
+    await db('users')
+    .where('user_id', id)
+    .update(update)
+
+    return getById(id)
+}
+
 const insert = async (user) => {
     await db('users')
     .insert(user)
@@ -76,5 +84,6 @@ module.exports = {
     getFollowersById,
     getPostsById,
     followById,
-    unFollowById
+    unFollowById,
+    updateById
 }

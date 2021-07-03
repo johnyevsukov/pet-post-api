@@ -36,6 +36,14 @@ router.get('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.put('/:id', (req, res, next) => {
+    User.updateById(req.params.id, req.body)
+    .then(user => {
+        res.status(200).json(user)
+    })
+    .catch(next)
+})
+
 router.get('/:id/following', (req, res, next) => {
     User.getFollowingById(req.params.id)
     .then(following => {
