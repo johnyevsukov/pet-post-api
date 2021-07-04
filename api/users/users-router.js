@@ -44,6 +44,14 @@ router.put('/:id', (req, res, next) => {
     .catch(next)
 })
 
+router.post('/search', (req, res, next) => {
+    User.getBy(req.body)
+    .then(users => {
+        res.status(200).json(users)
+    })
+    .catch(next)
+})
+
 router.get('/:id/following', (req, res, next) => {
     User.getFollowingById(req.params.id)
     .then(following => {

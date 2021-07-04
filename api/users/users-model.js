@@ -31,10 +31,9 @@ const getPostsById = (id) => {
     .orderBy('created_at', 'desc')
 }
 
-const getBy = (filter) => {
+const getBy = (user) => {
     return db('users')
-    .where(filter)
-    .first()
+    .where('username', 'like', `%${user.username}%`)
 }
 
 const followById = async (connection) => {
@@ -71,7 +70,6 @@ const deleteById = (id) => {
     return db('users')
     .where('user_id', id)
     .del()
-
 }
 
 module.exports = {
