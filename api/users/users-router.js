@@ -45,7 +45,7 @@ router.put('/:id', (req, res, next) => {
 })
 
 router.post('/search', (req, res, next) => {
-    User.getBy(req.body)
+    User.getBySearch(req.body)
     .then(users => {
         res.status(200).json(users)
     })
