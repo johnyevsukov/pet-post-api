@@ -54,8 +54,9 @@ const getByUserId = (id) => {
 }
 
 const getBy = (filter) => {
-    return db('posts')
-    .where(filter)
+    return db('posts as p')
+    .join('users as u', 'u.user_id', 'p.user_id')
+    .where('p.user_id', filter.user_id)
 }
 
 module.exports = {

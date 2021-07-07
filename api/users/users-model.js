@@ -26,9 +26,10 @@ const getFollowingById = (id) => {
 }
 
 const getPostsById = (id) => {
-    return db('posts')
-    .where('user_id', id)
-    .orderBy('created_at', 'desc')
+    return db('posts as p')
+    .join('users as u', 'u.user_id', 'p.user_id')
+    .where('p.user_id', id)
+    .orderBy('p.created_at', 'desc')
 }
 
 const getBySearch = (user) => {
