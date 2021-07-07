@@ -47,6 +47,7 @@ const getByUserId = (id) => {
     return db('posts as p')
     .select(
         'p.post_id',
+        'p.created_at',
         'p.post_text',
         'u.username')
     .join('users as u', 'p.user_id', 'u.user_id')
