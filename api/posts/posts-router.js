@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Post = require('./posts-model')
 const Comment = require('../comments/comments-model')
+const Like = require('../likes/likes-model')
 const User = require('../users/users-model')
 const { restrict } = require('../auth/auth-middleware')
 
@@ -79,6 +80,26 @@ router.post('/:id/comments', (req, res, next) => {
     Comment.post(comment)
     .then(comment => {
         res.status(200).json(comment)
+    })
+    .catch(next)
+})
+
+router.post('/:id/likes', (req, res, next) => {
+    const like = { ...req.body, post_id: req.params.id }
+    Like.post(like)
+    .then(likes => {
+        res.status(200).json(likes)
+    })
+    .catch(next)
+})
+
+router.delete('/:usr_id/unlike/:pst_id', (req, res, next) => {
+    Like.unlikeById({
+        user_id: req.params.user_id,
+        post_id: req.params.pst_id
+    })
+    .then(likes => {
+        res.status(200).json(likes)
     })
     .catch(next)
 })
