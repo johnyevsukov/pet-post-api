@@ -29,6 +29,7 @@ const getByPostId = (id) => {
     .select(
         'c.comment_id',
         'c.post_id',
+        'c.created_at',
         'c.comment_text',
         'u.username',
         'c.user_id')
