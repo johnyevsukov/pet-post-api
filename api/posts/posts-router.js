@@ -93,9 +93,17 @@ router.post('/:id/likes', (req, res, next) => {
     .catch(next)
 })
 
+router.get('/:id/likes', (req, res, next) => {
+    Like.getByPostId(req.params.id)
+    .then(likes => {
+        res.status(200).json(likes)
+    })
+    .catch(next)
+})
+
 router.delete('/:usr_id/unlike/:pst_id', (req, res, next) => {
     Like.unlikeById({
-        user_id: req.params.user_id,
+        user_id: req.params.usr_id,
         post_id: req.params.pst_id
     })
     .then(likes => {
