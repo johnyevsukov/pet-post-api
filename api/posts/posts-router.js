@@ -8,13 +8,13 @@ const { restrict } = require('../auth/auth-middleware')
 
 router.use(restrict)
 
-router.get('/', (req, res, next) => {
-    Post.getAll()
-    .then(posts => {
-        res.status(200).json(posts)
-    })
-    .catch(next)
-})
+// router.get('/', (req, res, next) => {
+//     Post.getAll()
+//     .then(posts => {
+//         res.status(200).json(posts)
+//     })
+//     .catch(next)
+// })
 
 router.get('/:id', (req, res, next) => {
     Post.getById(req.params.id)

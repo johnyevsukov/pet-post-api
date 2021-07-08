@@ -2,13 +2,13 @@ const router = require('express').Router()
 const Comment = require('./comments-model')
 
 
-router.get('/', (req, res, next) => {
-    Comment.getAll()
-    .then(comments => {
-        res.status(200).json(comments)
-    })
-    .catch(next)
-})
+// router.get('/', (req, res, next) => {
+//     Comment.getAll()
+//     .then(comments => {
+//         res.status(200).json(comments)
+//     })
+//     .catch(next)
+// })
 
 router.put('/:id', (req, res, next) => {
     Comment.updateById(req.params.id, req.body)

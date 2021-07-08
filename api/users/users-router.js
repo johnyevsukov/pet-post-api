@@ -4,13 +4,13 @@ const { restrict } = require('../auth/auth-middleware')
 
 router.use(restrict)
 
-router.get('/', (req, res, next) => {
-    User.getAll()
-    .then(users => {
-        res.status(200).json(users)
-    })
-    .catch(next)
-})
+// router.get('/', (req, res, next) => {
+//     User.getAll()
+//     .then(users => {
+//         res.status(200).json(users)
+//     })
+//     .catch(next)
+// })
 
 router.delete('/:id', (req, res, next) => {
     if(req.decodedToken.subject == req.params.id) {
