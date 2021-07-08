@@ -27,7 +27,13 @@ const getFollowingById = (id) => {
 
 const getPostsById = (id) => {
     return db('posts as p')
-    .join('users as u', 'u.user_id', 'p.user_id')
+    .select(
+        'p.post_id',
+        'p.created_at',
+        'p.post_text',
+        'p.user_id',
+        'u.username')
+    .join('users as u', 'p.user_id', 'u.user_id')
     .where('p.user_id', id)
     .orderBy('p.created_at', 'desc')
 }
