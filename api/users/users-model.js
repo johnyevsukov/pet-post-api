@@ -40,7 +40,7 @@ const getPostsById = (id) => {
 
 const getBySearch = (user) => {
     return db('users')
-    .where('username', 'like', `%${user.username}%`)
+    .where('username', 'ilike', `%${user.username}%`)
 }
 
 const getBy = (filter) => {
