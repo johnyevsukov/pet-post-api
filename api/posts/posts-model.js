@@ -67,6 +67,23 @@ const getBy = (filter) => {
     .orderBy('p.created_at', 'desc')
 }
 
+// wip new timeline endpoint
+const getTimelinePosts = (id) => {
+    return db.with('_posts', db.raw(
+        `select p.* from users as u\
+        join connections as c\
+        on u.user_id = c.follower_id\
+        join posts as p\
+        on p.user_id = c.following_id\
+        where u.user_id = ${id}\
+        union\
+        select * from posts as po\
+        where user_id = ${id}`
+        )).select('*')
+        .from('_posts as p')
+        .orderBy('p.created_at', 'desc')
+}
+
 module.exports = {
     getAll,
     getById,
@@ -74,5 +91,6 @@ module.exports = {
     getByUserId,
     updateById,
     deleteById,
-    post
+    post,
+    getTimelinePosts
 }

@@ -51,20 +51,32 @@ router.delete('/:id', (req, res, next) => {
     .catch(next)
 })
 
-router.get('/timeline/feed', async (req, res, next) => {
-    try {
-        const userPosts = await Post.getBy({ user_id: req.decodedToken.subject })
-        const userFolling = await User.getFollowingById(req.decodedToken.subject)
-        const followingPosts = await Promise.all(
-            userFolling.map(following => {
-                return Post.getBy({ user_id: following.user_id })
-            })
-        )
-        res.json(userPosts.concat(...followingPosts))
-    }
-    catch(err) {
-        next(err)
-    }
+// old timeline endpoint
+
+// router.get('/timeline/feed', async (req, res, next) => {
+//     try {
+//         const userPosts = await Post.getBy({ user_id: req.decodedToken.subject })
+//         const userFolling = await User.getFollowingById(req.decodedToken.subject)
+//         const followingPosts = await Promise.all(
+//             userFolling.map(following => {
+//                 return Post.getBy({ user_id: following.user_id })
+//             })
+//         )
+//         res.json(userPosts.concat(...followingPosts))
+//     }
+//     catch(err) {
+//         next(err)
+//     }
+// })
+
+// new wip timeline endpoint
+
+router.get('/timeline/feed', (req, res, next) => {
+    Post.getTimelinePosts(req.decodedToken.subject)
+    .then(posts => {
+        res.status(200).json(posts)
+    })
+    .catch(next)
 })
 
 router.get('/:id/comments', (req, res, next) => {
