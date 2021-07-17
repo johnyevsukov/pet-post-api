@@ -69,7 +69,7 @@ router.delete('/:id', (req, res, next) => {
 //     }
 // })
 
-// new wip timeline endpoint
+// new timeline endpoint
 
 router.get('/timeline/feed', (req, res, next) => {
     Post.getTimelinePosts(req.decodedToken.subject)
