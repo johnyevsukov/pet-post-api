@@ -5,6 +5,7 @@ exports.up = function(knex) {
       users.string('username', 200).notNullable().unique()
       users.string('password', 200).notNullable()
       users.string('user_email', 320).notNullable().unique()
+      users.string('user_avatar', 200)
       users.string('user_species', 200)
       users.date('user_birthday')
       users.string('user_location', 200)

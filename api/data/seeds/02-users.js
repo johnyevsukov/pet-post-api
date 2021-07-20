@@ -5,6 +5,7 @@ exports.seed = function(knex) {
         return knex('users').insert([
           {username: 'Winston',
           password: '$2a$08$z93ZSJTeyujfmh8ayog7I.6HpJP4cQFlhuKKW6xYLL8x5MCbfW9Wm',
+          user_avatar: 'rodent',
           user_email: 'winston@gmail.com',
           user_species: 'gerbil',
           user_birthday: '2019-06-01',
@@ -12,6 +13,7 @@ exports.seed = function(knex) {
 
           {username: 'Boris',
           password: '2190f3e7e5e0bee2a21',
+          user_avatar: 'rodent',
           user_email: 'borisisgreat@aol.com',
           user_species: 'gerbil',
           user_birthday: '2019-08-20',
@@ -19,6 +21,7 @@ exports.seed = function(knex) {
 
           {username: 'Stanley',
           password: '2190f3e7e5e0bee2a21',
+          user_avatar: 'rodent',
           user_email: 'stantheman@yahoo.com',
           user_species: 'gerbil',
           user_birthday: '2019-08-20',
@@ -26,6 +29,7 @@ exports.seed = function(knex) {
 
           {username: 'Chonk',
           password: '2190f3e7e5e0bee2a21',
+          user_avatar: 'hamster',
           user_email: 'chonkus@gmail.com',
           user_species: 'hamster',
           user_birthday: '2018-11-07',
@@ -33,6 +37,7 @@ exports.seed = function(knex) {
 
           {username: 'Thunder',
           password: '2190f3e7e5e0bee2a21',
+          user_avatar: 'lizard',
           user_email: 'leavemealone@live.com',
           user_species: 'leopard gecko',
           user_birthday: '2004-02-17',
@@ -40,6 +45,7 @@ exports.seed = function(knex) {
 
           {username: 'Clementine',
           password: '2190f3e7e5e0bee2a21',
+          user_avatar: 'cat',
           user_email: 'clemmy@gmail.com',
           user_species: 'cat',
           user_birthday: '2013-01-01',
@@ -47,6 +53,7 @@ exports.seed = function(knex) {
 
           {username: 'Milo',
           password: '2190f3e7e5e0bee2a21',
+          user_avatar: 'dog',
           user_email: 'borkwoof@live.com',
           user_species: 'dog',
           user_birthday: '2011-10-18',
