@@ -87,7 +87,7 @@ exports.seed = function(knex) {
           password: '2190f3e7e5e0bee2a21',
           user_avatar: 'frog',
           user_email: 'ribbit@gmail.com',
-          user_species: 'tree frog',
+          user_species: 'frog',
           user_birthday: '2021-01-02',
           user_location: 'Virginia'},
 
