@@ -39,7 +39,7 @@ exports.seed = function(knex) {
           {post_text: 'new dog in the house. not sure how I feel about him.',
           user_id: 7}, // 12
 
-          {post_text: 'could sure go for a mud role right about now..',
+          {post_text: 'could sure go for a mud roll right about now..',
           user_id: 8}, // 13
 
           {post_text: 'anybody got any slop?',
