@@ -85,6 +85,26 @@ const deleteById = (id) => {
     .del()
 }
 
+// const autoPopulate = (id) => {
+//     return db('connections')
+//     .insert({following_id: id, follower_id: 1})
+//     .insert({following_id: id, follower_id: 2})
+//     .insert({following_id: id, follower_id: 3})
+//     .insert({following_id: id, follower_id: 4})
+//     .insert({following_id: id, follower_id: 5})
+//     .insert({following_id: id, follower_id: 6})
+//     .insert({following_id: id, follower_id: 7})
+//     .insert({following_id: id, follower_id: 8})
+//     .insert({following_id: id, follower_id: 9})
+//     .insert({following_id: id, follower_id: 10})
+//     .insert({following_id: id, follower_id: 11})
+//     .insert({following_id: id, follower_id: 12})
+//     .insert({following_id: 1, follower_id: id})
+//     .insert({following_id: 5, follower_id: id})
+//     .insert({following_id: 9, follower_id: id})
+//     .insert({following_id: 12, follower_id: id})
+// }
+
 module.exports = {
     getAll,
     getById,

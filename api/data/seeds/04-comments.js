@@ -3,7 +3,7 @@ exports.seed = function(knex) {
     return knex('comments').del()
       .then(function () {
         return knex('comments').insert([
-          {comment_text: 'congrats on the bin!',
+          {comment_text: 'congrats on the enclosure!',
           post_id: 1,
           user_id: 2},
 
@@ -45,7 +45,63 @@ exports.seed = function(knex) {
 
           {comment_text: 'I think hes alright',
           post_id: 12,
-          user_id: 3}
+          user_id: 3},
+          
+          {comment_text: 'ohhh the moisturrree',
+          post_id: 13,
+          user_id: 11},
+
+          {comment_text: 'gross..',
+          post_id: 13,
+          user_id: 6},
+
+          {comment_text: '???',
+          post_id: 15,
+          user_id: 10},
+
+          {comment_text: "don't complain",
+          post_id: 17,
+          user_id: 12},
+
+          {comment_text: 'yikes!!',
+          post_id: 22,
+          user_id: 1},
+
+          {comment_text: 'run!',
+          post_id: 22,
+          user_id: 2},
+
+          {comment_text: '.-.',
+          post_id: 22,
+          user_id: 3},
+
+          {comment_text: 'I think hes alright',
+          post_id: 12,
+          user_id: 3},
+
+          {comment_text: '.........',
+          post_id: 23,
+          user_id: 1},
+
+          {comment_text: "that's the right attitude buddy!",
+          post_id: 24,
+          user_id: 5},
+
+          {comment_text: 'heck yeah dude',
+          post_id: 24,
+          user_id: 11},
+
+          {comment_text: 'WOO!!',
+          post_id: 18,
+          user_id: 4},
+
+          {comment_text: "umm.. don't know how to break this to you..",
+          post_id: 16,
+          user_id: 3},
+
+          {comment_text: 'bro..we all live in enclosures..',
+          post_id: 16,
+          user_id: 2}
         ]);
       });
   };
