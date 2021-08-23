@@ -74,6 +74,12 @@ exports.seed = function(knex) {
 
           {follower_id: '8',
           following_id: '6'},
+
+          {follower_id: '10',
+          following_id: '9'},
+
+          {follower_id: '4',
+          following_id: '8'}
         ]);
       });
   };
