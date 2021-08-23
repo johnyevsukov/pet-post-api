@@ -101,7 +101,11 @@ exports.seed = function(knex) {
 
           {comment_text: 'bro..we all live in enclosures..',
           post_id: 16,
-          user_id: 2}
+          user_id: 2},
+
+          {comment_text: 'yes. yes you should.',
+          post_id: 28,
+          user_id: 6}
         ]);
       });
   };

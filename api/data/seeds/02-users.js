@@ -98,6 +98,14 @@ exports.seed = function(knex) {
           user_species: 'garden snake',
           user_birthday: '2021-01-02',
           user_location: 'Virginia'},
+
+          {username: 'Coco', // 13
+          password: '2190f3e7e5e0bee2a21',
+          user_avatar: 'bird',
+          user_email: 'coooo@live.com',
+          user_species: 'parakeet',
+          user_birthday: '2020-01-01',
+          user_location: 'North Dakota'}
         ]);
       });
   };

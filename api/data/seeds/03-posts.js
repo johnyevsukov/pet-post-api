@@ -77,6 +77,15 @@ exports.seed = function(knex) {
 
           {post_text: "am I asleep? am I awake? who knows! my eyes don't close..",
           user_id: 12}, // 25
+
+          {post_text: "had some nice seeds!",
+          user_id: 13}, // 26
+
+          {post_text: "in the words of a poet.. squawk squawk..",
+          user_id: 13}, // 27
+
+          {post_text: "Clementine the cat just followed me. should I be worried??",
+          user_id: 13}, // 28
         ]);
       });
   };
