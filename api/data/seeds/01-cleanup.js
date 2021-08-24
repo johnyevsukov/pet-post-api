@@ -1,5 +1,10 @@
 const { clean } = require('knex-cleaner')
 
+/* 
+   wipe previous seeding
+   before seeding again
+*/
+
 exports.seed = function (knex) {
   return clean(knex, {
     mode: 'truncate',
