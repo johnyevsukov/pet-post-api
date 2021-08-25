@@ -22,4 +22,5 @@ with React.js, Node.js, Express.js, and PostgreSQL
 ### "Pet tested. Pet approved."
 ---
 ![Chonk Picture](./api/assets/chonk.jpeg#chonk)
+
 ---
