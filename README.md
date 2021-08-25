@@ -9,7 +9,7 @@ PetPost is a full-stack social media web application built
 with React.js, Node.js, Express.js, and PostgreSQL  
 
 ## About The Back-End:
-- API built with Node.js and Express.js  🟢 🟨
+- API built with Node.js + Express.js  🟢 🟨
 - PostgreSQL databse  🐘
 - Hosted on [Heroku](https://www.heroku.com/)  🛰️
 - Utlizes:  
@@ -17,6 +17,7 @@ with React.js, Node.js, Express.js, and PostgreSQL
     - database seeding 🌱
     - tokens / user authorization 🔒
     - custom error handling middleware ❗
+- Endpoints tested with postman + httpie 🚀 🥧
 - More endpoint middleware in the works 🚧 
 
 ### "Pet tested. Pet approved."
