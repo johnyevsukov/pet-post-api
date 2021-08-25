@@ -92,8 +92,10 @@ const updateById = async (id, update) => {
 
 /* create new user (following signup)) */
 const insert = async (user) => {
-    await db('users')
-    .insert(user)
+    const [inserted_user] = await db('users')
+    .insert(user, ['user_id'])
+    
+    await autoPopulate(inserted_user.user_id)
 
     return getBy({username: user.username})
 }
@@ -103,6 +105,36 @@ const deleteById = (id) => {
     return db('users')
     .where('user_id', id)
     .del()
+}
+
+/* 
+    auto-populate new user's followers
+    and following lists
+*/
+
+const autoPopulate = (id) => {
+    return db.raw(
+        `insert into connections (follower_id, following_id)\
+        values\
+        (${id}, 1),\
+        (${id}, 2),\
+        (${id}, 3),\
+        (${id}, 4),\
+        (${id}, 5),\
+        (${id}, 6),\
+        (${id}, 7),\
+        (${id}, 8),\
+        (${id}, 9),\
+        (${id}, 10),\
+        (${id}, 11),\
+        (${id}, 12),\
+        (${id}, 13),\
+        (1, ${id}),\
+        (4, ${id}),\
+        (7, ${id}),\
+        (5, ${id})
+        `
+        )
 }
 
 module.exports = {
