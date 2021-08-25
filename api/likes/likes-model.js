@@ -13,7 +13,7 @@ const post = async (like) => {
     return getByPostId(id)
 }
 
-/* like post by post_id */
+/* unlike post by post_id */
 const unlikeById = async (like) => {
     await db('likes')
     .where(like)
