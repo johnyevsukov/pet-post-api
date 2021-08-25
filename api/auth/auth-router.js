@@ -2,13 +2,15 @@ const bcrypt = require('bcryptjs')
 const router = require('express').Router()
 const User = require('../users/users-model')
 const { tokenBuilder } = require('./token-builder')
+
+/* middleware */
 const {
     checkBody,
     checkUsernameFree,
     checkUsernameExists
 } = require('./auth-middleware')
 
-
+/* register new user POST endpoint */
 router.post('/register', checkBody, checkUsernameFree, (req, res, next) => {
     let user = req.body
     const hash = bcrypt.hashSync(user.password, 8)
@@ -26,6 +28,7 @@ router.post('/register', checkBody, checkUsernameFree, (req, res, next) => {
     .catch(next)
 })
 
+/* user login POST endpoint */
 router.post('/login', checkBody, checkUsernameExists, (req, res, next) => {
     if(bcrypt.compareSync(req.body.password, req.user.password)) {
         const token = tokenBuilder(req.user)

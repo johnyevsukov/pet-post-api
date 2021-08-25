@@ -2,9 +2,10 @@ const { JWT_SECRET } = require('../secrets/index')
 const jwt = require('jsonwebtoken')
 const User = require('../users/users-model')
 
+/* simple restrict user authorization middleware */
 const restrict = (req, res, next) => {
-
  const token = req.headers.authorization
+
  if(token == undefined) {
    return next({ status: 401, message: 'token required' })
  }
@@ -19,6 +20,8 @@ const restrict = (req, res, next) => {
  })
 };
 
+
+/* simple body format check middleware */
 const checkBody = (req, res, next) => {
     if(req.body.username == undefined || req.body.password == undefined) {
         next({
@@ -31,6 +34,10 @@ const checkBody = (req, res, next) => {
     }
 }
 
+/* 
+    check if username is already taken middleware
+    (for signup)
+*/
 const checkUsernameFree = (req, res, next) => {
     User.getBy({ username: req.body.username })
     .then(user => {
@@ -46,6 +53,10 @@ const checkUsernameFree = (req, res, next) => {
     })
 }
 
+/* 
+    check if username is exists middleware
+    (for login)
+*/
 const checkUsernameExists = (req, res, next) => {
     User.getBy({ username: req.body.username })
     .then(user => {

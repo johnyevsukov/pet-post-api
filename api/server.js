@@ -17,18 +17,21 @@ server.use('/api/posts', postsRouter)
 server.use('/api/comments', commentsRouter)
 server.use('/api/auth', authRouter)
 
+/* root endpoint */
 server.get('/', (req, res) => {
     res.status(200).json({
         message: 'api up'
     })
 })
 
+/* catch all */
 server.get('*', (req, res) => {
     res.status(404).json({
         message: 'not found'
     })
 })
 
+/* error handling middleware */
 server.use((err, req, res, next) => {
     res.status(err.status || 500).json({
       custom: 'internal server error',

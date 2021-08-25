@@ -1,6 +1,6 @@
 const db = require('../data/db-config')
 
-
+/* get all posts in posts table */
 const getAll = () => {
     return db('posts as p')
     .select(
@@ -10,6 +10,7 @@ const getAll = () => {
     .join('users as u', 'p.user_id', 'u.user_id')
 }
 
+/* get post by id */
 const getById = (id) => {
     return db('posts as p')
     .select(
@@ -20,6 +21,7 @@ const getById = (id) => {
     .first()
 }
 
+/* update post by id */
 const updateById = async (id, change) => {
     await db('posts')
     .where('post_id', id)
@@ -28,12 +30,14 @@ const updateById = async (id, change) => {
     return getById(id)
 }
 
+/* create new post in posts table */
 const post = async (post) => {
     const [id] = await db('posts')
     .insert(post, 'post_id')
     return getById(id)
 }
 
+/* delete post by id */
 const deleteById = async (id) => {
     const deleted = await getById(id)
     await db('posts')
@@ -43,6 +47,7 @@ const deleteById = async (id) => {
     return deleted
 }
 
+/* get user's posts by user_id */
 const getByUserId = (id) => {
     return db('posts as p')
     .select(
@@ -54,6 +59,7 @@ const getByUserId = (id) => {
     .where('p.user_id', id)
 }
 
+/* get posts by desired filter */
 const getBy = (filter) => {
     return db('posts as p')
     .select(
@@ -67,7 +73,34 @@ const getBy = (filter) => {
     .orderBy('p.created_at', 'desc')
 }
 
-// new timeline endpoint
+/* 
+    big chungus query for getting
+    user's timeline feed posts
+    (i.e. posts of users they are
+    following)
+
+    -  _posts  -
+    +--------------------------------------------+
+    |  (select all posts of following users)     |
+    |        *                                   |
+    |        |                                   |
+    |        +--union--+                         |
+    |                  |                         |
+    |                  *                         |
+    |  (select all posts of the logged in user)  |
+    +--------------------------------------------+
+                *
+                |
+        (select all from _posts
+        and order by time created)
+                |
+                *   
+    +----------------------------+
+    |                            |
+    |  nicely formatted data :)  |
+    |                            |
+    +----------------------------+
+*/
 const getTimelinePosts = (id) => {
     return db.with('_posts', db.raw(
         `select p.*, us.username from users as u\
