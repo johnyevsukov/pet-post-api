@@ -19,6 +19,9 @@ with React.js, Node.js, Express.js, and PostgreSQL
     - custom error handling middleware ❗
 - Endpoints tested with postman + httpie 🚀 🥧
 - More endpoint middleware in the works 🚧 
+- To do list:
+    - indexing 🧮
+    - pagination 🔢
 
 ### "Pet tested. Pet approved."
 ---
