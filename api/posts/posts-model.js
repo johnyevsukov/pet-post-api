@@ -40,13 +40,7 @@ const deleteById = async (id) => {
 /* get user's posts by user_id */
 const getByUserId = (id) => {
   return db("posts as p")
-    .select(
-      "p.post_id",
-      "p.created_at",
-      "p.post_text",
-      "u.user_avatar",
-      "u.username"
-    )
+    .select("p.post_id", "p.created_at", "p.post_text", "u.username")
     .join("users as u", "p.user_id", "u.user_id")
     .where("p.user_id", id);
 };
