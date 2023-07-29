@@ -93,7 +93,7 @@ const getTimelinePosts = (id) => {
     .with(
       "_posts",
       db.raw(
-        `select p.*, us.username from users as u\
+        `select p.*, us.username, us.user_avatar from users as u\
         join connections as c\
         on u.user_id = c.follower_id\
         join posts as p\
