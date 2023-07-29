@@ -60,40 +60,13 @@ const getBy = (filter) => {
     .orderBy("p.created_at", "desc");
 };
 
-/* 
-    big chungus query for getting
-    user's timeline feed posts
-    (i.e. posts of users they are
-    following)
-
-    -  _posts  -
-    +--------------------------------------------+
-    |  (select all posts of following users)     |
-    |        *                                   |
-    |        |                                   |
-    |        +--union--+                         |
-    |                  |                         |
-    |                  *                         |
-    |  (select all posts of the logged in user)  |
-    +--------------------------------------------+
-                *
-                |
-        (select all from _posts
-        and order by time created)
-                |
-                *   
-    +----------------------------+
-    |                            |
-    |  nicely formatted data :)  |
-    |                            |
-    +----------------------------+
-*/
+/* get posts of followed users */
 const getTimelinePosts = (id) => {
   return db
     .with(
       "_posts",
       db.raw(
-        `select p.*, us.username from users as u\
+        `select p.*, us.user_avatar, us.username from users as u\
         join connections as c\
         on u.user_id = c.follower_id\
         join posts as p\
@@ -102,7 +75,7 @@ const getTimelinePosts = (id) => {
         on p.user_id = us.user_id\
         where u.user_id = ${id}\
         union\
-        select po.*, usr.username from posts as po\
+        select po.*, Null as us.user_avatar, usr.username from posts as po\
         join users as usr\
         on po.user_id = usr.user_id\
         where po.user_id = ${id}`
