@@ -66,7 +66,7 @@ const getTimelinePosts = (id) => {
     .with(
       "_posts",
       db.raw(
-        `select p.*, us.user_avatar, us.username from users as u\
+        `select p.*, us.username from users as u\
         join connections as c\
         on u.user_id = c.follower_id\
         join posts as p\
@@ -75,7 +75,7 @@ const getTimelinePosts = (id) => {
         on p.user_id = us.user_id\
         where u.user_id = ${id}\
         union\
-        select po.*, Null as us.user_avatar, usr.username from posts as po\
+        select po.*, usr.username from posts as po\
         join users as usr\
         on po.user_id = usr.user_id\
         where po.user_id = ${id}`
